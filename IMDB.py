@@ -82,3 +82,7 @@ class Series(Movie):
         super().__init__(title, release_year, genre)
         self.season = season
         self.episode = episode
+        self.play_count = 0
+
+    def play(self):
+        self.play_count += 1
