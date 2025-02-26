@@ -9,7 +9,7 @@ i napisz program, który spełnia następujące założenia:
    - Tytuł
    - Rok wydania
    - Gatunek
-   - Liczba odtworzeń
+   - Liczba odtworzeń  __DONE
 
 2. Umożliwia przechowywanie informacji na temat seriali.
    Każdy serial powinien mieć następujące atrybuty:
@@ -63,3 +63,22 @@ Niech program po uruchomieniu działa w następujący sposób:
    gdzie <data> to bieżąca data w formacie DD.MM.RRRR.
  - Wyświetli listę top 3 najpopularniejszych tytułów.
 """
+
+
+# Class creating instances of Movies
+class Movie:
+    def __init__(self, title, release_year, genre):
+        self.title = title
+        self.release_year = release_year
+        self.genre = genre
+        self.play_count = 0
+
+    def play(self):
+        self.play_count += 1
+
+
+class Series(Movie):
+    def __init__(self, title, release_year, genre, season, episode):
+        super().__init__(title, release_year, genre)
+        self.season = season
+        self.episode = episode
