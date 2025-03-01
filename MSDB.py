@@ -58,7 +58,7 @@ DODATKOWO:
 Niech program po uruchomieniu działa w następujący sposób:
  - Wyświetli na konsoli komunikat Biblioteka filmów.
  - Wypełni bibliotekę treścią.
- - Wygeneruje odtworzenia treści za pomocą funkcji generate_views.
+ - Wygeneruje odtworzeni treści za pomocą funkcji generate_views.
  - Wyświetli na konsoli komunikat Najpopularniejsze filmy i seriale dnia <data>,
    gdzie <data> to bieżąca data w formacie DD.MM.RRRR.
  - Wyświetli listę top 3 najpopularniejszych tytułów.
