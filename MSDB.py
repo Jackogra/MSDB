@@ -29,5 +29,31 @@ class Series(Movie):
         return f"{self.title} S{self.season}E{self.episode}"
 
 
-nowy = Movie("The Simpsons", 1998, "Comedy")
-print(nowy.__str__())
+media_library = []
+
+media_library.append(Movie("The Shawshank Redemption", 1994, "Drama"))
+media_library.append(Movie("The Dark Knight", 2008, "Action"))
+media_library.append(Movie("Forrest Gump", 1994, "Drama"))
+media_library.append(Movie("The Matrix", 1999, "Sci-Fi"))
+media_library.append(Movie("Interstellar", 2014, "Sci-Fi"))
+media_library.append(Movie("The Godfather", 1972, "Comedy"))
+media_library.append(Movie("Toy Story", 1995, "Animation"))
+media_library.append(Series("The Office", 2005, "Comedy", 2, 3))
+media_library.append(Series("Friends", 1994, "Comedy", 5, 10))
+media_library.append(Series("How I Met Your Mother", 2005, "Comedy", 7, 12))
+media_library.append(Series("Brooklyn Nine-Nine", 2013, "Comedy", 5, 1))
+media_library.append(Series("Miami Vice", 1984, "Crime", 3, 9))
+media_library.append(Series("Knight Rider", 1982, "Action", 2, 3))
+media_library.append(Series("Scooby Doo", 1982, "Cartoon", 3, 8))
+
+# for item in media_library:
+#     print(item)
+
+
+if __name__ == "__main__":
+
+    def get_movies():   # function to return movies sorted by title
+        pass
+
+    def get_series():   # function to return series sorted by title
+        pass
