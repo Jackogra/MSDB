@@ -13,7 +13,10 @@ class Movie:
 
     def __str__(self):
         return f"{self.title} ({self.release_year})"
-
+    
+    def __gt__(self, other):
+        return self.title > other.title
+        
 
 class Series(Movie):
     def __init__(self, title, release_year, genre, season, episode):
@@ -46,22 +49,19 @@ media_library.append(Series("Miami Vice", 1984, "Crime", 3, 9))
 media_library.append(Series("Knight Rider", 1982, "Action", 2, 3))
 media_library.append(Series("Scooby Doo", 1982, "Cartoon", 3, 8))
 
-# for item in media_library:
-#     print(item)
-
 
 if __name__ == "__main__":
 
     def get_movies():
         movies = [title for title in media_library if not(isinstance(title, Series))]
-        return movies
+        return sorted(movies)
 
     def get_series():   # function to return movies sorted by title
         series = [title for title in media_library if isinstance(title, Series)]
-        return series
+        return sorted(series)
             
 
     
-new = get_movies() + get_series()
+new = get_series()
 for i in new:
     print(i)
