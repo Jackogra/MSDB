@@ -52,8 +52,16 @@ media_library.append(Series("Scooby Doo", 1982, "Cartoon", 3, 8))
 
 if __name__ == "__main__":
 
-    def get_movies():   # function to return movies sorted by title
-        pass
+    def get_movies():
+        movies = [title for title in media_library if not(isinstance(title, Series))]
+        return movies
 
-    def get_series():   # function to return series sorted by title
-        pass
+    def get_series():   # function to return movies sorted by title
+        series = [title for title in media_library if isinstance(title, Series)]
+        return series
+            
+
+    
+new = get_movies() + get_series()
+for i in new:
+    print(i)
