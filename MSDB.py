@@ -1,4 +1,5 @@
 # Task description available in README.md file
+import random
 
 # Class creating instances of Movies
 class Movie:
@@ -50,23 +51,41 @@ media_library.append(Series("Knight Rider", 1982, "Action", 2, 3))
 media_library.append(Series("Scooby Doo", 1982, "Cartoon", 3, 8))
 
 
-if __name__ == "__main__":
+def get_movies():     # function to return movies sorted by title
+    movies = [title for title in media_library if not (isinstance(title, Series))]
+    return sorted(movies)
 
-    def get_movies():     # function to return movies sorted by title
-        movies = [title for title in media_library if not(isinstance(title, Series))]
-        return sorted(movies)
 
-    def get_series():     # function to return series sorted by title
-        series = [title for title in media_library if isinstance(title, Series)]
-        return sorted(series)
-            
-    def search(title):     # function to search if given title is to be found in the media_library
-        search_result = [item for item in media_library if item.title.lower() == title.lower()]
-        if search_result:
-            print("Found the following matches: ")
-            for item in search_result:
-                print(item)
-        else:
-            print("No matches found.")
+def get_series():     # function to return series sorted by title
+    series = [title for title in media_library if isinstance(title, Series)]
+    return sorted(series)
 
-    search("Toy Story")
+
+def search(title):     # function to search if given title is to be found in the media_library
+    search_result = [item for item in media_library if item.title.lower() == title.lower()]
+    if search_result:
+        print("Found the following matches: ")
+        for item in search_result:
+            print(item)
+    else:
+        print("No matches found.")
+
+
+def generate_views():     # function to generate random play count on a random production in a database
+    production = random.choice(media_library)
+    production.play_count += random.randint(1, 100)
+    return f"{production} - {production.play_count}"
+
+
+def run_generate_views():     # function to run generate_views() 10 times
+    run_generate_views_item = [generate_views() for title in range(10)]
+    return run_generate_views_item
+
+
+# if __name__ == "__main__":
+#     pass
+
+
+test = run_generate_views()
+for el in test:
+    print(el)
