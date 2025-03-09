@@ -1,5 +1,7 @@
 # Task description available in README.md file
 import random
+import datetime
+
 
 # Class creating instances of Movies
 class Movie:
@@ -14,10 +16,10 @@ class Movie:
 
     def __str__(self):
         return f"{self.title} ({self.release_year})"
-    
+
     def __gt__(self, other):
         return self.title > other.title
-        
+
 
 class Series(Movie):
     def __init__(self, title, release_year, genre, season, episode):
@@ -34,21 +36,6 @@ class Series(Movie):
 
 
 media_library = []
-
-media_library.append(Movie("The Shawshank Redemption", 1994, "Drama"))
-media_library.append(Movie("The Dark Knight", 2008, "Action"))
-media_library.append(Movie("Forrest Gump", 1994, "Drama"))
-media_library.append(Movie("The Matrix", 1999, "Sci-Fi"))
-media_library.append(Movie("Interstellar", 2014, "Sci-Fi"))
-media_library.append(Movie("The Godfather", 1972, "Comedy"))
-media_library.append(Movie("Toy Story", 1995, "Animation"))
-media_library.append(Series("The Office", 2005, "Comedy", 2, 3))
-media_library.append(Series("Friends", 1994, "Comedy", 5, 10))
-media_library.append(Series("How I Met Your Mother", 2005, "Comedy", 7, 12))
-media_library.append(Series("Brooklyn Nine-Nine", 2013, "Comedy", 5, 1))
-media_library.append(Series("Miami Vice", 1984, "Crime", 3, 9))
-media_library.append(Series("Knight Rider", 1982, "Action", 2, 3))
-media_library.append(Series("Scooby Doo", 1982, "Cartoon", 3, 8))
 
 
 def get_movies():     # function to return movies sorted by title
@@ -83,20 +70,61 @@ def run_generate_views():     # function to run generate_views() 10 times
 
 
 # variable to allow a chosen number of top titles to be returned
-no_of_top_productions = int(input("How many top movies you want to check?: "))
 
 
-def top_titles(no_of_top_productions):     # function to return top watched titles in the library
-    sorted_top_titles =  sorted(media_library, key=lambda item: item.play_count, reverse=True)
-    return sorted_top_titles[:no_of_top_productions]
-
-# if __name__ == "__main__":
-#     pass
-
-
-run_generate_views()
+def top_titles(num):     # function to return top watched titles in the library
+    run_generate_views()
+    # no_of_top_productions = int(input("How many top movies you want to check?: "))
+    sorted_top_titles = sorted(media_library, key=lambda item: item.play_count, reverse=True)
+    return sorted_top_titles[:num]
 
 
-test = top_titles(no_of_top_productions)
-for el in test:
-    print(el)
+if __name__ == "__main__":
+    print("Media Library")
+    media_library = [
+        Movie("The Shawshank Redemption", 1994, "Drama"),
+        Movie("The Dark Knight", 2008, "Action"),
+        Movie("Forrest Gump", 1994, "Drama"),
+        Movie("The Matrix", 1999, "Sci-Fi"),
+        Movie("Interstellar", 2014, "Sci-Fi"),
+        Movie("The Godfather", 1972, "Crime"),
+        Movie("Toy Story", 1995, "Animation"),
+        Movie("Inception", 2010, "Sci-Fi"),
+        Movie("Pulp Fiction", 1994, "Crime"),
+        Movie("The Lord of the Rings: The Return of the King", 2003, "Fantasy"),
+        Movie("Gladiator", 2000, "Action"),
+        Movie("The Lion King", 1994, "Animation"),
+        Movie("Titanic", 1997, "Romance"),
+        Movie("Saving Private Ryan", 1998, "War"),
+        Movie("The Green Mile", 1999, "Drama"),
+        Movie("The Silence of the Lambs", 1991, "Thriller"),
+        Movie("Schindler's List", 1993, "History"),
+        Movie("Back to the Future", 1985, "Sci-Fi"),
+        Movie("The Departed", 2006, "Crime"),
+        Movie("Whiplash", 2014, "Drama"),
+        Series("The Office", 2005, "Comedy", 2, 3),
+        Series("Friends", 1994, "Comedy", 5, 10),
+        Series("How I Met Your Mother", 2005, "Comedy", 7, 12),
+        Series("Brooklyn Nine-Nine", 2013, "Comedy", 1, 0),
+        Series("Miami Vice", 1984, "Crime", 3, 5),
+        Series("Knight Rider", 1982, "Action", 2, 3),
+        Series("Scooby Doo", 1982, "Cartoon", 3, 8),
+        Series("Breaking Bad", 2008, "Crime, Drama", 6, 18),
+        Series("Stranger Things", 2016, "Drama, Fantasy, Horror", 4, 2),
+        Series("The Crown", 2016, "Biography, Drama, History", 2, 8),
+        Series("The Mandalorian", 2019, "Action, Adventure, Fantasy", 1, 11),
+        Series("The Simpsons", 1989, "Animation, Comedy", 33, 15),
+        Series("The Witcher", 2019, "Action, Adventure, Drama", 2, 5),
+        Series("Westworld", 2016, "Drama, Mystery, Sci-Fi", 4, 14),
+        Series("Peaky Blinders", 2013, "Crime, Drama", 6, 4),
+        Series("Narcos", 2015, "Biography, Crime, Drama", 2, 12),
+        Series("Fargo", 2014, "Crime, Drama, Thriller", 3, 7),
+        Series("Sherlock", 2010, "Crime, Drama, Mystery", 3, 10),
+        Series("Black Mirror", 2011, "Drama, Sci-Fi, Thriller", 2, 7),
+        Series("The Boys", 2019, "Action, Comedy, Crime", 1, 2)
+    ]
+    run_generate_views()
+    print(f"The most popular movies and series on {datetime.date.today()}:")
+    top_titles = top_titles(3)
+    for top_title in top_titles:
+        print(top_title)
