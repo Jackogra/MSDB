@@ -31,17 +31,17 @@ class Series(Movie):
         return f"{self.title} S{self.season}E{self.episode}"
 
 
-def get_movies():     # function to return movies sorted by title
+def get_movies(media_library):     # function to return movies sorted by title
     movies = [title for title in media_library if not (isinstance(title, Series))]
     return sorted(movies)
 
 
-def get_series():     # function to return series sorted by title
+def get_series(media_library):     # function to return series sorted by title
     series = [title for title in media_library if isinstance(title, Series)]
     return sorted(series)
 
 
-def search(title):     # function to search if given title is to be found in the media_library
+def search(title, media_library):     # function to search if given title is to be found in the media_library
     search_result = [item for item in media_library if item.title.lower() == title.lower()]
     if search_result:
         print("Found the following matches: ")
@@ -51,16 +51,16 @@ def search(title):     # function to search if given title is to be found in the
         print("No matches found.")
 
 
-def generate_views():     # function to generate random play count on a random production in a database
+def generate_views(media_library):     # function to generate random play count on a random production in a database
     production = random.choice(media_library)
     production.play_count += random.randint(1, 100)
 
 
-def run_generate_views():     # function to run generate_views() 10 times
-    run_generate_views_item = [generate_views() for title in range(10)]
+def run_generate_views(media_library):     # function to run generate_views() 10 times
+    run_generate_views_item = [generate_views(media_library) for title in range(10)]
 
 
-def top_titles(num):     # function to return top watched titles in the library
+def top_titles(num, media_library):     # function to return top watched titles in the library
     # no_of_top_productions = int(input("How many top movies you want to check?: "))
     sorted_top_titles = sorted(media_library, key=lambda item: item.play_count, reverse=True)
     return sorted_top_titles[:num]
@@ -111,8 +111,8 @@ if __name__ == "__main__":
         Series("Black Mirror", 2011, "Drama, Sci-Fi, Thriller", 2, 7),
         Series("The Boys", 2019, "Action, Comedy, Crime", 1, 2)
     ]
-    run_generate_views()
+    run_generate_views(media_library)
     print(f"The most popular movies and series on {datetime.date.today()}:")
-    top_titles = top_titles(3)
+    top_titles = top_titles(3, media_library)
     for top_title in top_titles:
         print(top_title)
