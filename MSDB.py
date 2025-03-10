@@ -54,12 +54,10 @@ def search(title):     # function to search if given title is to be found in the
 def generate_views():     # function to generate random play count on a random production in a database
     production = random.choice(media_library)
     production.play_count += random.randint(1, 100)
-    return f"{production} - {production.play_count}"
 
 
 def run_generate_views():     # function to run generate_views() 10 times
     run_generate_views_item = [generate_views() for title in range(10)]
-    return run_generate_views_item
 
 
 def top_titles(num):     # function to return top watched titles in the library
