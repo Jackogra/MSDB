@@ -61,7 +61,6 @@ def run_generate_views():     # function to run generate_views() 10 times
 
 
 def top_titles(num):     # function to return top watched titles in the library
-    run_generate_views()
     # no_of_top_productions = int(input("How many top movies you want to check?: "))
     sorted_top_titles = sorted(media_library, key=lambda item: item.play_count, reverse=True)
     return sorted_top_titles[:num]
