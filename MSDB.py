@@ -31,14 +31,17 @@ class Series(Movie):
         return f"{self.title} S{self.season}E{self.episode}"
 
 
+def get_media(media_library, media_type):     # function that filter Movies or Series
+    get_media = [item for item in media_library if (type(item) == Series) == media_type]
+    return get_media
+
+
 def get_movies(media_library):     # function to return movies sorted by title
-    movies = [title for title in media_library if not (isinstance(title, Series))]
-    return sorted(movies)
+    return sorted(get_media(media_library, media_type=False))
 
 
 def get_series(media_library):     # function to return series sorted by title
-    series = [title for title in media_library if isinstance(title, Series)]
-    return sorted(series)
+    return sorted(get_media(media_library, media_type=True))
 
 
 def search(title, media_library):     # function to search if given title is to be found in the media_library
