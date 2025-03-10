@@ -26,16 +26,9 @@ class Series(Movie):
         super().__init__(title, release_year, genre)
         self.season = format(season, "02d")
         self.episode = format(episode, "02d")
-        self.play_count = 0
-
-    def play(self):
-        self.play_count += 1
 
     def __str__(self):
         return f"{self.title} S{self.season}E{self.episode}"
-
-
-media_library = []
 
 
 def get_movies():     # function to return movies sorted by title
@@ -69,15 +62,13 @@ def run_generate_views():     # function to run generate_views() 10 times
     return run_generate_views_item
 
 
-# variable to allow a chosen number of top titles to be returned
-
-
 def top_titles(num):     # function to return top watched titles in the library
     run_generate_views()
     # no_of_top_productions = int(input("How many top movies you want to check?: "))
     sorted_top_titles = sorted(media_library, key=lambda item: item.play_count, reverse=True)
     return sorted_top_titles[:num]
 
+media_library = []
 
 if __name__ == "__main__":
     print("Media Library")
