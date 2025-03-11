@@ -32,16 +32,16 @@ class Series(Movie):
 
 
 def get_media(media_library, media_type):     # function that filter Movies or Series
-    get_media = [item for item in media_library if (type(item) == Series) == media_type]
+    get_media = sorted([item for item in media_library if isinstance(item, media_type)])
     return get_media
 
 
 def get_movies(media_library):     # function to return movies sorted by title
-    return sorted(get_media(media_library, media_type=False))
+    return get_media(media_library, media_type=False)
 
 
 def get_series(media_library):     # function to return series sorted by title
-    return sorted(get_media(media_library, media_type=True))
+    return get_media(media_library, media_type=True)
 
 
 def search(title, media_library):     # function to search if given title is to be found in the media_library
@@ -60,7 +60,8 @@ def generate_views(media_library):     # function to generate random play count 
 
 
 def run_generate_views(media_library):     # function to run generate_views() 10 times
-    run_generate_views_item = [generate_views(media_library) for title in range(10)]
+    for title in range(10):
+        generate_views(media_library)
 
 
 def top_titles(num, media_library):     # function to return top watched titles in the library
@@ -68,7 +69,6 @@ def top_titles(num, media_library):     # function to return top watched titles 
     sorted_top_titles = sorted(media_library, key=lambda item: item.play_count, reverse=True)
     return sorted_top_titles[:num]
 
-media_library = []
 
 if __name__ == "__main__":
     print("Media Library")
