@@ -32,16 +32,16 @@ class Series(Movie):
 
 
 def get_media(media_library, media_type):     # function that filter Movies or Series
-    get_media = sorted([item for item in media_library if isinstance(item, media_type)])
-    return get_media
+    get_media = [item for item in media_library if type(item) == media_type]
+    return sorted(get_media, key=lambda item: item.title)
 
 
 def get_movies(media_library):     # function to return movies sorted by title
-    return get_media(media_library, media_type=False)
+    return get_media(media_library, Movie)
 
 
 def get_series(media_library):     # function to return series sorted by title
-    return get_media(media_library, media_type=True)
+    return get_media(media_library, Series)
 
 
 def search(title, media_library):     # function to search if given title is to be found in the media_library
@@ -96,7 +96,7 @@ if __name__ == "__main__":
         Series("The Office", 2005, "Comedy", 2, 3),
         Series("Friends", 1994, "Comedy", 5, 10),
         Series("How I Met Your Mother", 2005, "Comedy", 7, 12),
-        Series("Brooklyn Nine-Nine", 2013, "Comedy", 1, 0),
+        Series("Brooklyn Nine-Nine", 2013, "Comedy", 1, 10),
         Series("Miami Vice", 1984, "Crime", 3, 5),
         Series("Knight Rider", 1982, "Action", 2, 3),
         Series("Scooby Doo", 1982, "Cartoon", 3, 8),
